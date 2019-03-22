@@ -16,24 +16,24 @@ class FilterNav extends Component {
   handler = evt => {
     const check = evt.target.getAttribute("data-is");
     console.log(check);
+
+    const selection = contactArray.filter(
+      contact => contact.filter === "check"
+    );
+    console.log(selection);
   };
 
-filterdata = 
+  //   const men = contactArray.filter (contact => contact.filter === "men");
 
-  const men = contactArray.filter (contact => contact.filter === "men");
+  //   const women = contactArray.filter(contact => contact.filter === "women");
 
-  const women = contactArray.filter(contact => contact.filter ===
-  "women"); 
-  
-  const other = contactArray.filter(contact => contact.filter
-  === "other");
-
+  //   const other = contactArray.filter(contact => contact.filter === "other");
 
   render() {
     const { handler } = this;
     return (
       <section className="filter-nav">
-        <form onChange={filterdata} >
+        <form>
           <label>
             <input
               type="radio"

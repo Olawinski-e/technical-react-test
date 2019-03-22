@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Header from "./components/Header.js";
-import ArticlesTable from "./components/ArticlesTable.js";
+import FilterNav from "./components/FilterNav.js";
 
 import "./App.css";
 
@@ -11,7 +11,7 @@ class App extends Component {
       <section className="App">
         <Header className="header" />
 
-        <ArticlesTable className="articles-table" />
+        <FilterNav className="articles-table" />
       </section>
     );
   }

@@ -1,26 +1,39 @@
 import React, { Component } from "react";
+import contactArray from "./../contacts.json";
+
+import ArticlesTable from "./ArticlesTable.js";
 
 import "./FilterNav.css";
 
-class ArticlesTable extends Component {
+class FilterNav extends Component {
   state = {
     all: [],
     men: [],
-    women: []
+    women: [],
+    other: []
   };
 
   handler = evt => {
-    // important pour un event handler d'etre en fat arrow => car elle récup la valeur de this de la classe parente
-    // console.log(evt);
     const check = evt.target.getAttribute("data-is");
     console.log(check);
   };
 
+filterdata = 
+
+  const men = contactArray.filter (contact => contact.filter === "men");
+
+  const women = contactArray.filter(contact => contact.filter ===
+  "women"); 
+  
+  const other = contactArray.filter(contact => contact.filter
+  === "other");
+
+
   render() {
-    const { handler } = this; // syntaxe par destructuration
+    const { handler } = this;
     return (
-      <div className="filter-nav">
-        <form>
+      <section className="filter-nav">
+        <form onChange={filterdata} >
           <label>
             <input
               type="radio"
@@ -49,9 +62,11 @@ class ArticlesTable extends Component {
             other
           </label>
         </form>
-      </div>
+
+        <ArticlesTable />
+      </section>
     );
   }
 }
 
-export default ArticlesTable;
+export default FilterNav;

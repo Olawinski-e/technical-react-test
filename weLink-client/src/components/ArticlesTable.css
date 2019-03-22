@@ -10,3 +10,17 @@
   font-size: 22px;
   font-weight: 400;
 }
+
+.div-image {
+  width: 200px;
+  height: 200px;
+}
+
+img.image {
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+}

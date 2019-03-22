@@ -19,29 +19,24 @@ class ArticlesTable extends Component {
           <h3 className="page-title">Page Title</h3>
           <FilterNav />
         </div>
-
-        <table className="Table">
-          const men = contactArray.filter (contact => contact.filter === "men");
-          const women = contactArray.filter(contact => contact.filter ===
-          "women"); const other = contactArray.filter(contact => contact.filter
-          === "other");
+        const men = contactArray.filter (contact => contact.filter === "men");
+        const women = contactArray.filter(contact => contact.filter ===
+        "women"); const other = contactArray.filter(contact => contact.filter
+        === "other");
+        <div className="table">
           {contactArray.map((oneFilter, index) => {
             return (
-              <tr key={oneFilter._id}>
-                <td>
-                  <img
-                    src={oneFilter.pictureUrl}
-                    className="image"
-                    alt="image2"
-                  />
-                </td>
-                <td>
-                  <h3>{oneFilter.name}</h3>
-                </td>
-              </tr>
+              <div className="div-image">
+                <img
+                  src={oneFilter.pictureUrl}
+                  className="image"
+                  alt="image2"
+                />
+                <h3>{oneFilter.name}</h3>
+              </div>
             );
           })}
-        </table>
+        </div>
       </section>
     );
   }

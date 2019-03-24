@@ -68,3 +68,8 @@ a:hover {
     height: 50px;
   }
 }
+
+a.header-menu-text {
+  color: white;
+  background-color: rgb(42, 103, 173);
+}

@@ -7,107 +7,90 @@ import "./FilterNav.css";
 
 class FilterNav extends Component {
   state = {
-    dataFilter: contactArray,
-    women: false,
-    men: false,
-    other: false,
-    filters: ["women", "men", "other"]
-    // array coché ou non
-    // soit array vide = tout
-    // soit array = choix
+    selection: contactArray,
+
+    selected: ["women", "men", "other"],
+    filters: {
+      women: true,
+      men: true,
+      other: true
+    }
   };
 
-  // handler = evt => {
-  //   const check = evt.target.getAttribute("data-is");
-  //   console.log("CHECK", check);
-
-  //   const selection = contactArray.filter(oneContact => {
-  //     return oneContact.filter === check;
-  //   });
-
-  //   console.log("SELECTION", selection);
-  //   this.setState({
-  //     dataFilter: selection
-  //   });
-  // };
-
   genericOnChange(event) {
-    const { filters } = this.state;
     const { name, checked } = event.target;
-    // METTRE A JOUR FILTERS
-    filters.filter(oneFilter => {
-      return oneFilter !== checked;
-    });
+    var updatedFilter = [];
+    this.setState(
+      {
+        filters: Object.assign({}, this.state.filters, {
+          [name]: checked
+        })
+      },
+      () => {
+        const { filters } = this.state;
+        updatedFilter = Object.keys(filters)
+          .filter(function(key) {
+            return filters[key];
+          })
+          .map(String);
+        this.setState(
+          {
+            selected: updatedFilter
+          },
+          () => {
+            const { selected } = this.state;
+            const selection = contactArray.filter(oneContact => {
+              return selected.includes(oneContact.filter);
+            });
+            console.log("selection", selection);
 
-    this.setState({
-      [name]: checked,
-      filters: filters
-    });
+            this.setState({
+              selection: selection
+            });
+          }
+        );
+      }
+    );
   }
-
-  updateSelection() {
-    const { filters } = this.state;
-    const selection = contactArray.filter(oneContact => {
-      return filters.includes(oneContact.filter);
-    });
-    console.log("SELECTION", selection);
-    this.setState({
-      selection: selection
-    });
-  }
-
-  //   const men = contactArray.filter (contact => contact.filter === "men");
-
-  //   const women = contactArray.filter(contact => contact.filter === "women");
-
-  //   const other = contactArray.filter(contact => contact.filter === "other");
 
   render() {
-    //const { handler } = this;
+    // const { handler } = this;
     return (
       <section className="filter-nav">
         <form>
           <label>
             <input
               type="checkbox"
-              // data-is="women"
-              // onChange={handler}
-              // name="filter"
-              checked={this.state.women}
+              checked={this.state.filters.women}
               onChange={event => this.genericOnChange(event)}
               name="women"
             />
-            <p className="paragraph">women</p>
+            women
           </label>
           <label>
             <input
               type="checkbox"
-              // data-is="men"
-              // onChange={handler}
-              // name="filter"
-              checked={this.state.men}
+              checked={this.state.filters.men}
               onChange={event => this.genericOnChange(event)}
               name="men"
             />
-            <p className="paragraph"> men</p>
+            men
           </label>
           <label>
             <input
               type="checkbox"
-              // data-is="other"
-              // onChange={handler}
-              // name="filter"
-              checked={this.state.other}
+              checked={this.state.filters.other}
               onChange={event => this.genericOnChange(event)}
               name="other"
             />
-            <p className="paragraph"> other</p>
+            other
           </label>
         </form>
 
-        <ArticlesTable selection={this.state.dataFilter} />
+        <ArticlesTable selection={this.state.selection} />
 
-        {/* Ici une div/component avec le nombre de boutons générés en fonction de la taille de la selection (donc avec modulo 9) en fonction du bouton cliqué on slice (0,8) ou (9, 17)ou (18,26)....*/}
+        {/* Ici une div/component avec le nombre de boutons générés en fonction de la taille de la selection (donc  avec modulo 9)
+        en fonction du bouton cliqué on slice (0,8) ou (9, 17) ou (18,26)....*/}
       </section>
     );
   }

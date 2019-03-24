@@ -1,26 +1,24 @@
 import React, { Component } from "react";
-// import contacts from "./../contacts.json";
+import contacts from "./../contacts.json";
 
 import "./ArticlesTable.css";
 
 class ArticlesTable extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     contactArray: this.props.selection
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { contactArray: contacts.slice(0, 9) };
+  }
 
   render() {
-    // const { contactArray } = this.state;
-    // console.log(this.state);
+    const { contactArray } = this.state;
+
     return (
       <section className="articles-table-page">
         <h2 className="page-title">Page Title</h2>
 
         <div className="GridView container-fluid">
           <div className="row">
-            {this.props.selection.map(oneContact => {
+            {contactArray.map(oneContact => {
               return (
                 <div className="col-4 myCol p-0 image-size">
                   <div className="square">

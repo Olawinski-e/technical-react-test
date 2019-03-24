@@ -77,7 +77,7 @@ class FilterNav extends Component {
               onChange={event => this.genericOnChange(event)}
               name="women"
             />
-            women
+            <p className="paragraph">women</p>
           </label>
           <label>
             <input
@@ -89,7 +89,7 @@ class FilterNav extends Component {
               onChange={event => this.genericOnChange(event)}
               name="men"
             />
-            men
+            <p className="paragraph"> men</p>
           </label>
           <label>
             <input
@@ -101,7 +101,7 @@ class FilterNav extends Component {
               onChange={event => this.genericOnChange(event)}
               name="other"
             />
-            other
+            <p className="paragraph"> other</p>
           </label>
         </form>
 

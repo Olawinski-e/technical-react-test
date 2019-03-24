@@ -8,50 +8,51 @@ import "./FilterNav.css";
 class FilterNav extends Component {
   state = {
     dataFilter: contactArray,
-    women: true,
-    men: true,
-    other: true
+    women: false,
+    men: false,
+    other: false,
+    filters: ["women", "men", "other"]
     // array coché ou non
-
     // soit array vide = tout
     // soit array = choix
   };
 
-  handler = evt => {
-    const check = evt.target.getAttribute("data-is");
-    console.log("CHECK", check);
+  // handler = evt => {
+  //   const check = evt.target.getAttribute("data-is");
+  //   console.log("CHECK", check);
 
-    const selection = contactArray.filter(oneContact => {
-      return oneContact.filter === check;
+  //   const selection = contactArray.filter(oneContact => {
+  //     return oneContact.filter === check;
+  //   });
+
+  //   console.log("SELECTION", selection);
+  //   this.setState({
+  //     dataFilter: selection
+  //   });
+  // };
+
+  genericOnChange(event) {
+    const { filters } = this.state;
+    const { name, checked } = event.target;
+    // METTRE A JOUR FILTERS
+    filters.filter(oneFilter => {
+      return oneFilter !== checked;
     });
 
+    this.setState({
+      [name]: checked,
+      filters: filters
+    });
+  }
+
+  updateSelection() {
+    const { filters } = this.state;
+    const selection = contactArray.filter(oneContact => {
+      return filters.includes(oneContact.filter);
+    });
     console.log("SELECTION", selection);
     this.setState({
-      dataFilter: selection
-    });
-  };
-
-  allWomen() {
-    this.setState({
-      women: true,
-      men: false,
-      other: false
-    });
-  }
-
-  allMen() {
-    this.setState({
-      women: false,
-      men: true,
-      other: false
-    });
-  }
-
-  allOther() {
-    this.setState({
-      women: false,
-      men: false,
-      other: true
+      selection: selection
     });
   }
 
@@ -62,40 +63,51 @@ class FilterNav extends Component {
   //   const other = contactArray.filter(contact => contact.filter === "other");
 
   render() {
-    const { handler } = this;
+    //const { handler } = this;
     return (
       <section className="filter-nav">
         <form>
           <label>
             <input
               type="checkbox"
-              data-is="women"
-              onChange={handler}
-              name="filter"
+              // data-is="women"
+              // onChange={handler}
+              // name="filter"
+              checked={this.state.women}
+              onChange={event => this.genericOnChange(event)}
+              name="women"
             />
             women
           </label>
           <label>
             <input
               type="checkbox"
-              data-is="men"
-              onChange={handler}
-              name="filter"
+              // data-is="men"
+              // onChange={handler}
+              // name="filter"
+              checked={this.state.men}
+              onChange={event => this.genericOnChange(event)}
+              name="men"
             />
             men
           </label>
           <label>
             <input
               type="checkbox"
-              data-is="other"
-              onChange={handler}
-              name="filter"
+              // data-is="other"
+              // onChange={handler}
+              // name="filter"
+              checked={this.state.other}
+              onChange={event => this.genericOnChange(event)}
+              name="other"
             />
             other
           </label>
         </form>
 
         <ArticlesTable selection={this.state.dataFilter} />
+
+        {/* Ici une div/component avec le nombre de boutons générés en fonction de la taille de la selection (donc avec modulo 9) en fonction du bouton cliqué on slice (0,8) ou (9, 17)ou (18,26)....*/}
       </section>
     );
   }

@@ -16,22 +16,25 @@ class ArticlesTable extends Component {
     // console.log(this.state);
     return (
       <section className="articles-table-page">
-        <div className="page-title-and-filters">
-          <h3 className="page-title">Page Title</h3>
-        </div>
-        <div className="table">
-          {this.props.selection.map(oneContact => {
-            return (
-              <div className="div-image">
-                <img
-                  src={oneContact.pictureUrl}
-                  className="image"
-                  alt="image2"
-                />
-                <h3>{oneContact.name}</h3>
-              </div>
-            );
-          })}
+        <h2 className="page-title">Page Title</h2>
+
+        <div className="GridView container-fluid">
+          <div className="row">
+            {this.props.selection.map(oneContact => {
+              return (
+                <div className="col-4 myCol p-0 image-size">
+                  <div className="square">
+                    <img
+                      src={oneContact.pictureUrl}
+                      className={`square-img ${oneContact.style}`}
+                      alt="image2"
+                    />
+                  </div>
+                  <h3>{oneContact.name}</h3>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
     );

@@ -1,16 +1,32 @@
 import React, { Component } from "react";
-// import contactArray from "./../contacts.json";
+import contactArray from "./../contacts.json";
 
 import "./Filter1.css";
 
-class Filter1 extends Component {
+class Filter3 extends Component {
+  state = {
+    dataFilter: contactArray
+  };
+
+  handler = evt => {
+    const check = evt.target.getAttribute("other");
+    console.log(check);
+  };
+
+  //   const women = contactArray.filter(contact => contact.filter === "women");
+
+  //   const other = contactArray.filter(contact => contact.filter === "other");
+
   render() {
+    const { handler } = this;
     return (
-      <section>
-        <h1>H</h1>
-      </section>
+      <div className="filter-nav">
+        <section className="filter-nav">
+          <div onChange={handler} />
+        </section>
+      </div>
     );
   }
 }
 
-export default Filter1;
+export default Filter3;

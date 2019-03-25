@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
-
+import { NavLink, Switch, Route } from "react-router-dom";
 import Homepage from "./Homepage.js";
 import Filter1 from "./Filter1.js";
 import Filter2 from "./Filter2.js";
 import Filter3 from "./Filter3.js";
-
 import "./Header.css";
 
 class Header extends Component {
@@ -19,14 +17,31 @@ class Header extends Component {
                 LOGO
               </NavLink>
               <div className="searchheader">
-                <NavLink to="/filter1">Women</NavLink>
-                <NavLink to="/filter2">Men</NavLink>
-                <NavLink to="/filter3">Other</NavLink>
+                <NavLink
+                  name="women"
+                  to="/filter1"
+                  onClick={event => this.props.onLink(event)}
+                >
+                  Women
+                </NavLink>
+                <NavLink
+                  name="men"
+                  to="/filter2"
+                  onClick={event => this.props.onLink(event)}
+                >
+                  Men
+                </NavLink>
+                <NavLink
+                  name="other"
+                  to="/filter3"
+                  onClick={event => this.props.onLink(event)}
+                >
+                  Other
+                </NavLink>
               </div>
             </div>
           </nav>
         </header>
-
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/filter1" component={Filter1} />

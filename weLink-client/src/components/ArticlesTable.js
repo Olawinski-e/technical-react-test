@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-import contacts from "./../contacts.json";
 
 import "./ArticlesTable.css";
 
 class ArticlesTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { contactArray: contacts.slice(0, 9) };
-  }
+
 
   render() {
-    const { contactArray } = this.state;
+    const contactArray = this.props.selection;
 
     return (
       <section className="articles-table-page">

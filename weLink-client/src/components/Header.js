@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Homepage from "./Homepage.js";
-import Filter1 from "./Filter1.js";
-import Filter2 from "./Filter2.js";
-import Filter3 from "./Filter3.js";
+
 
 import "./Header.css";
 
@@ -15,24 +13,17 @@ class Header extends Component {
         <header>
           <nav className="header">
             <div className="menu-container">
-              <NavLink className="header-menu-text" exact to="/">
+              <Link className="header-menu-text" exact to="/">
                 LOGO
-              </NavLink>
+              </Link>
               <div className="searchheader">
-                <NavLink to="/filter1">Women</NavLink>
-                <NavLink to="/filter2">Men</NavLink>
-                <NavLink to="/filter3">Other</NavLink>
+                <Link name="women" onClick={event => this.props.onLink(event)}>Women</Link>
+                <Link name="men" onClick={event => this.props.onLink(event)}>Men</Link>
+                <Link name="other" onClick={event => this.props.onLink(event)}>Other</Link>
               </div>
             </div>
           </nav>
         </header>
-
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/filter1" component={Filter1} />
-          <Route path="/filter2" component={Filter2} />
-          <Route path="/filter3" component={Filter3} />
-        </Switch>
       </div>
     );
   }

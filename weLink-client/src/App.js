@@ -8,6 +8,10 @@ import PageNav from "./components/PageNav.js";
 
 import contactArray from "./contacts.json";
 
+import PageNav from "./components/PageNav.js";
+
+import contactArray from "./contacts.json";
+
 import "./App.css";
 
 class App extends Component {
@@ -78,9 +82,10 @@ class App extends Component {
     );
   }
 
-  // (11b) this method is passed to the Header component as a prop so that clicking a link 
-  // toggles the checkboxes accordingly. Not very dry for now, most of the code is the same as 
-  // genericOnChange  bove...notably for resetting the pagination and displaying page 1
+  // This method is passed to the Header component as a prop so that clicking a link 
+  // toggles the checkboxes accordingly. 
+  // (11b) Not very dry for now, most of the code is the same as genericOnChange 
+  // above...notably for resetting the pagination and displaying page 1
   genericSwitch(event) {
     //
     const { name } = event.target;

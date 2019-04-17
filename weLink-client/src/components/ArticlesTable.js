@@ -3,15 +3,18 @@ import React, { Component } from "react";
 import "./ArticlesTable.css";
 
 class ArticlesTable extends Component {
+<<<<<<< HEAD
 
 
   render() {
     const contactArray = this.props.page;
+=======
+  render() {
+    const contactArray = this.props.selection;
+>>>>>>> 5064ea2da7f4101faefdf6109b40bbdc847b3fb8
 
     return (
       <section className="articles-table-page">
-        <h2 className="page-title">Page Title</h2>
-
         <div className="GridView container-fluid">
           <div className="row">
             {contactArray.map(oneContact => {
@@ -24,7 +27,7 @@ class ArticlesTable extends Component {
                       alt="image2"
                     />
                   </div>
-                  <h3>{oneContact.name}</h3>
+                  <h3 className="title-card">{oneContact.name}</h3>
                 </div>
               );
             })}

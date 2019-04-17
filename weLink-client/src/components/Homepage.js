@@ -6,7 +6,7 @@ class Homepage extends Component {
   render() {
     return (
       <section className="homepage">
-        <h2 className="h2-title">Welcome!</h2>
+        <h1 className="h1-title">Welcome!</h1>
         <p className="paragraph"> To see some filters really useless...</p>
       </section>
     );

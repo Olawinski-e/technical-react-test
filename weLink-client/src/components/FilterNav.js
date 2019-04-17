@@ -5,6 +5,8 @@ import ArticlesTable from "./ArticlesTable.js";
 import "./FilterNav.css";
 
 class FilterNav extends Component {
+
+
   render() {
     return (
       <section className="filter-nav">
@@ -39,7 +41,7 @@ class FilterNav extends Component {
           </label>
         </form>
 
-        <ArticlesTable selection={this.props.selection} />
+        <ArticlesTable page={this.props.page}/>
 
         {/* Ici une div/component avec le nombre de boutons générés en fonction de la taille de la selection (donc  avec modulo 9)
         en fonction du bouton cliqué on slice (0,8) ou (9, 17) ou (18,26)....*/}

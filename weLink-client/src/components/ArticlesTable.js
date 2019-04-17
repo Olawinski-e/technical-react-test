@@ -3,8 +3,10 @@ import React, { Component } from "react";
 import "./ArticlesTable.css";
 
 class ArticlesTable extends Component {
+
+
   render() {
-    const contactArray = this.props.selection;
+    const contactArray = this.props.page;
 
     return (
       <section className="articles-table-page">

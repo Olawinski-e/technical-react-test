@@ -2,15 +2,11 @@ import React, { Component } from "react";
 
 import Header from "./components/Header.js";
 import FilterNav from "./components/FilterNav.js";
-import Homepage from "./components/Homepage.js";
 
 import PageNav from "./components/PageNav.js";
 
 import contactArray from "./contacts.json";
 
-import PageNav from "./components/PageNav.js";
-
-import contactArray from "./contacts.json";
 
 import "./App.css";
 

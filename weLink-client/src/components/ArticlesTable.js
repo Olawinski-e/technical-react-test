@@ -3,15 +3,10 @@ import React, { Component } from "react";
 import "./ArticlesTable.css";
 
 class ArticlesTable extends Component {
-<<<<<<< HEAD
 
 
   render() {
     const contactArray = this.props.page;
-=======
-  render() {
-    const contactArray = this.props.selection;
->>>>>>> 5064ea2da7f4101faefdf6109b40bbdc847b3fb8
 
     return (
       <section className="articles-table-page">
